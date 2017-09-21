@@ -1,0 +1,6 @@
+C:\Users\caian.sa\Documents\Visual Studio 2015\Projects\ExcelReader\ExcelReader\bin\Debug\ExcelReader.exe.config
+C:\Users\caian.sa\Documents\Visual Studio 2015\Projects\ExcelReader\ExcelReader\bin\Debug\ExcelReader.exe
+C:\Users\caian.sa\Documents\Visual Studio 2015\Projects\ExcelReader\ExcelReader\bin\Debug\ExcelReader.pdb
+C:\Users\caian.sa\Documents\Visual Studio 2015\Projects\ExcelReader\ExcelReader\obj\Debug\ExcelReader.csprojResolveAssemblyReference.cache
+C:\Users\caian.sa\Documents\Visual Studio 2015\Projects\ExcelReader\ExcelReader\obj\Debug\ExcelReader.exe
+C:\Users\caian.sa\Documents\Visual Studio 2015\Projects\ExcelReader\ExcelReader\obj\Debug\ExcelReader.pdb
