@@ -10,3 +10,6 @@ C:\Users\ronal\Documents\ExcelReader\ExcelReader\obj\Debug\ExcelReader.pdb
 C:\Users\ronal\Documents\ExcelReader\ExcelReader\bin\Debug\ExcelReader.exe
 C:\Users\ronal\Documents\ExcelReader\ExcelReader\bin\Debug\ExcelReader.pdb
 C:\Users\ronal\Documents\ExcelReader\ExcelReader\obj\Debug\ExcelReader.csprojResolveAssemblyReference.cache
+C:\Users\caian.sa\Documents\ExcelReader\ExcelReader\bin\Debug\ExcelReader.exe.config
+C:\Users\caian.sa\Documents\ExcelReader\ExcelReader\obj\Debug\ExcelReader.exe
+C:\Users\caian.sa\Documents\ExcelReader\ExcelReader\obj\Debug\ExcelReader.pdb
