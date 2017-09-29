@@ -12,6 +12,8 @@ namespace ExcelReader
     {
         static string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocume‌​nts) + "\\oi.xlsx";
         static Answer[] answers;
+        static Points[] orderedPoints;
+        static Answer currentPerson;
         static void Main(string[] args)
         {
             Excel.Application xlApp = new Excel.Application();
@@ -58,6 +60,20 @@ namespace ExcelReader
             Marshal.ReleaseComObject(xlApp);
 
             Console.ReadKey();
+            
+
+            foreach(Answer i in answers)
+            {
+                if(Console.ReadLine() == i.name)
+                {
+                    currentPerson = i;
+                }
+            }
+            orderedPoints = currentPerson.CheckMatch(answers);
+            foreach(Points point in orderedPoints)
+            {
+                Console.WriteLine(point.person);
+            }
         }
     }
 }

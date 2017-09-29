@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace ExcelReader
 {
+    class Points
+    {
+        public float value;
+        public string person;
+    }
     class Answer
     {
         public string time;
@@ -13,7 +18,7 @@ namespace ExcelReader
         public string group;
         public string[] answers = new string[24];
 
-        public Answer[] CheckMatch(Answer[] answers)
+        public Points[] CheckMatch(Answer[] answers)
         {
             float[] points = new float[answers.Length];
             for(int i = 0; i < answers.Length; i++)
@@ -82,8 +87,68 @@ namespace ExcelReader
                 {
                     points[i] += 1f;
                 }
+                if((answers[i].answers[10] ==  this.answers[10]))
+                {
+                    points[i] += 1f;
+                }
+                if((answers[i].answers[11] == this.answers[11]))
+                {
+                    points[i] += 1f;
+                }
+                if((answers[i].answers[12] == "Cachorro" && this.answers[12] == "Cobra") || (answers[i].answers[12] == "Cobra" && this.answers[12] == "Cachorro") || (answers[i].answers[12] == "Hamster" && this.answers[12] == "Gato") || (answers[i].answers[12] == "Gato" && this.answers[12] == "Hamster") || (answers[i].answers[12] == "Tartaruga" && this.answers[12] == "Pássaro") || (answers[i].answers[12] == "Pássaro" && this.answers[12] == "Tartaruga"))
+                { 
+                    points[i] += 1f;
+                }
+                if((answers[i].answers[13] ==  this.answers[13]))
+                {
+                    points[i] += 1f;
+                }
+                else if((answers[i].answers[13] == "Tarde" && (this.answers[13] == "Noite" || this.answers[13] == "Manhã")) || (this.answers[13] == "Tarde" && (answers[i].answers[13] == "Noite" || answers[i].answers[13] == "Manhã")))
+                {
+                    points[i] += 0.5f;
+                }
+                if((answers[i].answers[14] == "Ver séries" && this.answers[14] == "Ler livros") || (answers[i].answers[14] == "Ler livros" && this.answers[14] == "Ver séries") || (answers[i].answers[14] == "Esportes" && this.answers[14] == "Sair com amigos") || (answers[i].answers[14] == "Sair com amigos" && this.answers[14] == "Esportes") || (answers[i].answers[14] == "Esportes" && this.answers[14] == "Sair com amigos") || (answers[i].answers[14] == "Sair com amigos" && this.answers[14] == "Sair com amigos"))
+                { 
+                    points[i] += 1f;
+                }
+                if((answers[i].answers[15] == this.answers[15]))
+                {
+                    points[i] += 1f;
+                }
+                if ((answers[i].answers[16] == this.answers[16]))
+                {
+                    points[i] += 1f;
+                }
+                if((answers[i].answers[17] == this.answers[17]))
+                {
+                    points[i] += 1f;
+                }
             }
-            return new Answer[10];
+            Points[] result = new Points[points.Length];
+            for (int i  = 0; i < points.Length; i++)
+            {
+                result[i].value = points[i];
+                result[i].person = answers[i].name;
+            }
+            result = BubbleSort(result);
+            return result;
+        }
+        public static Points[] BubbleSort(Points[] arrayToBeSorted)
+        {
+            Points auxNumber;
+            for (int i = 0; i < arrayToBeSorted.Length; i++)
+            {
+                for (int j = 0; j < arrayToBeSorted.Length - 1; j++)
+                {
+                    if (arrayToBeSorted[j].value > arrayToBeSorted[j + 1].value)
+                    {
+                        auxNumber = arrayToBeSorted[j];
+                        arrayToBeSorted[j] = arrayToBeSorted[j + 1];
+                        arrayToBeSorted[j + 1] = auxNumber;
+                    }
+                }
+            }
+            return arrayToBeSorted;
         }
     }
 }
