@@ -21,7 +21,11 @@ namespace ExcelReader
         public Points[] CheckMatch(Answer[] answers)
         {
             float[] points = new float[answers.Length];
-            for(int i = 0; i < answers.Length; i++)
+            for(int i = 0; i < points.Length; i++)
+            {
+                points[i] = 0;
+            }
+            for(int i = 0; i < answers.Length - 1; i++)
             {
                 if((answers[i].answers[0] == "Sim" && this.answers[0] == "Não") || (answers[i].answers[0] == "Não" && this.answers[0] == "Sim"))
                 {
@@ -115,18 +119,11 @@ namespace ExcelReader
                 {
                     points[i] += 1f;
                 }
-                if ((answers[i].answers[16] == this.answers[16]))
-                {
-                    points[i] += 1f;
-                }
-                if((answers[i].answers[17] == this.answers[17]))
-                {
-                    points[i] += 1f;
-                }
             }
             Points[] result = new Points[points.Length];
-            for (int i  = 0; i < points.Length; i++)
+            for (int i  = 0; i < result.Length - 2; i++)
             {
+                result[i] = new Points();
                 result[i].value = points[i];
                 result[i].person = answers[i].name;
             }
@@ -136,9 +133,9 @@ namespace ExcelReader
         public static Points[] BubbleSort(Points[] arrayToBeSorted)
         {
             Points auxNumber;
-            for (int i = 0; i < arrayToBeSorted.Length; i++)
+            for (int i = 0; i < 129; i++)
             {
-                for (int j = 0; j < arrayToBeSorted.Length - 1; j++)
+                for (int j = 0; j < 18; j++)
                 {
                     if (arrayToBeSorted[j].value > arrayToBeSorted[j + 1].value)
                     {

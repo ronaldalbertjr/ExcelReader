@@ -14,8 +14,11 @@ namespace ExcelReader
         static Answer[] answers;
         static Points[] orderedPoints;
         static Answer currentPerson;
+        static string name;
         static void Main(string[] args)
         {
+            name = Console.ReadLine();
+            currentPerson = new Answer();
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(path);
             Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
@@ -33,16 +36,18 @@ namespace ExcelReader
                         answers[i - 2] = new Answer();
                     }
 
-                    if(xlRange.Cells[i,j] != null && xlRange.Cells[i,j].Value2 != null)
+                    if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
                     {
-                        if(j == 1)
+                        if (j == 1)
                             answers[i - 2].time = xlRange.Cells[i, j].Value2.ToString();
-                        else if(j == 2)
+                        else if (j == 2)
+                        { 
                             answers[i - 2].name = xlRange.Cells[i, j].Value2.ToString();
-                        else if(j == 3)
+                        }
+                        else if (j == 3)
                             answers[i - 2].group = xlRange.Cells[i, j].Value2.ToString();
                         else
-                            answers[i - 2].answers[j-4] = xlRange.Cells[i, j].Value2.ToString();
+                            answers[i - 2].answers[j - 4] = xlRange.Cells[i, j].Value2.ToString();
                     }
                 }
             }
@@ -59,20 +64,29 @@ namespace ExcelReader
             xlApp.Quit();
             Marshal.ReleaseComObject(xlApp);
 
-            Console.ReadKey();
             
-
-            foreach(Answer i in answers)
+            try
             {
-                if(Console.ReadLine() == i.name)
+                foreach (Answer i in answers)
                 {
-                    currentPerson = i;
+                    if (name == i.name)
+                    {
+                        currentPerson.time = i.time;
+                        currentPerson.name = i.name;
+                        currentPerson.group = i.group;
+                        currentPerson.answers = i.answers;
+                        Console.WriteLine(currentPerson.name);
+                        Console.WriteLine(currentPerson.group);
+                    }
                 }
             }
-            orderedPoints = currentPerson.CheckMatch(answers);
-            foreach(Points point in orderedPoints)
+            catch
             {
-                Console.WriteLine(point.person);
+                orderedPoints = answers[6].CheckMatch(answers);
+                foreach (Points point in orderedPoints)
+                {
+                    Console.WriteLine(point.person);
+                }
             }
         }
     }
